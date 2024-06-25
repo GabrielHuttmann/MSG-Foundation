@@ -171,103 +171,26 @@ class Mortgage extends Asset {
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 
-    public void read(RandomAccessFile fileName)
-    //
-    // reads a mortgage record from fileName.
-    // Assumes that the existence of fileName has already been established.
-    //
-    {
+    /**
+     * reads a mortgage record from fileName.
+     * Assumes that the existence of fileName has already been established.
+     *
+     * @param file
+     */
+    public void read(RandomAccessFile file) {
         try {
-            String inputString = new String();    // for storing mortgage record
-            int i = 0;                // position within string
+            String inputString = file.readLine();
 
-            inputString = fileName.readLine();
-
-            StringBuffer input = new StringBuffer();
-            while (inputString.charAt(i) != '|') {
-                input.append(inputString.charAt(i));
-                i++;
-            }
-
-            assetNumber = input.toString();
-            i++;
-
-            input = new StringBuffer();
-            while (inputString.charAt(i) != '|') {
-                input.append(inputString.charAt(i));
-                i++;
-            }
-
-            mortgageeName = input.toString();
-            i++;
-
-            input = new StringBuffer();
-            while (inputString.charAt(i) != '|') {
-                input.append(inputString.charAt(i));
-                i++;
-            }
-
-            Float tempFloat = new Float(input.toString());
-            price = tempFloat.floatValue();
-            i++;
-
-            input = new StringBuffer();
-            while (inputString.charAt(i) != '|') {
-                input.append(inputString.charAt(i));
-                i++;
-            }
-
-            dateMortgageIssued = input.toString();
-            i++;
-
-            input = new StringBuffer();
-            while (inputString.charAt(i) != '|') {
-                input.append(inputString.charAt(i));
-                i++;
-            }
-
-            tempFloat = new Float(input.toString());
-            currentWeeklyIncome = tempFloat.floatValue();
-            i++;
-
-            input = new StringBuffer();
-            while (inputString.charAt(i) != '|') {
-                input.append(inputString.charAt(i));
-                i++;
-            }
-
-            weeklyIncomeUpdated = input.toString();
-            i++;
-
-            input = new StringBuffer();
-            while (inputString.charAt(i) != '|') {
-                input.append(inputString.charAt(i));
-                i++;
-            }
-
-            tempFloat = new Float(input.toString());
-            annualPropertyTax = tempFloat.floatValue();
-            i++;
-
-            input = new StringBuffer();
-            while (inputString.charAt(i) != '|') {
-                input.append(inputString.charAt(i));
-                i++;
-            }
-
-            tempFloat = new Float(input.toString());
-            annualInsurancePremium = tempFloat.floatValue();
-            i++;
-
-            input = new StringBuffer();
-            while (i < inputString.length()) {
-                input.append(inputString.charAt(i));
-                i++;
-            }
-
-            tempFloat = new Float(input.toString());
-            mortgageBalance = tempFloat.floatValue();
-            i++;
+            String[] props = inputString.split("[|]");
+            assetNumber = props[0];
+            mortgageeName = props[1];
+            price =  Float.parseFloat(props[2]);
+            dateMortgageIssued = props[3];
+            currentWeeklyIncome = Float.parseFloat(props[4]);
+            weeklyIncomeUpdated = props[5];
+            annualPropertyTax = Float.parseFloat(props[6]);
+            annualInsurancePremium = Float.parseFloat(props[7]);
+            mortgageBalance = Float.parseFloat(props[8]);
         } catch (Exception e) {
             System.out.println("***** Error: Mortgage.read () *****");
             System.out.println("\t" + e);
