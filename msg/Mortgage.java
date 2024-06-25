@@ -200,23 +200,23 @@ class Mortgage extends Asset {
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 
-    public void write(RandomAccessFile fileName)
-    //
-    // writes a mortgage record to specified file.
-    //
-    {
+    /**
+     * writes a mortgage record to specified file.
+     *
+     * @param file
+     */
+    public void write(RandomAccessFile file) {
         try {
-            fileName.writeBytes(assetNumber + "|" + mortgageeName + "|");
-            fileName.writeBytes(price + "|" + dateMortgageIssued.toString() + "|");
-            fileName.writeBytes(currentWeeklyIncome + "|" + weeklyIncomeUpdated.toString() + "|");
-            fileName.writeBytes(annualPropertyTax + "|" + annualInsurancePremium + "|");
-            fileName.writeBytes(mortgageBalance + "\n");
+            file.writeBytes(assetNumber + "|" + mortgageeName + "|" +
+                    price + "|" + dateMortgageIssued.toString() + "|" +
+                    currentWeeklyIncome + "|" + weeklyIncomeUpdated.toString() + "|" +
+                    annualPropertyTax + "|" + annualInsurancePremium + "|" +
+                    mortgageBalance + "\n");
         } catch (Exception e) {
             System.out.println("***** Error: Mortgage.write () *****");
             System.out.println("\t" + e);
         }
-
-    }  // write
+    }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 
