@@ -320,7 +320,7 @@ class Mortgage extends Asset {
     // displays a list of all mortgage objects.
     //
     {
-        MortgagesReport.printReport();
+        Report.printReport("mortgage");
 
     }  // printAll
 
