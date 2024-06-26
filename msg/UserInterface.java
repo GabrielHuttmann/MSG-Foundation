@@ -296,7 +296,7 @@ class UserInterface
 		  break;
 
 		case '2':
-		  Mortgage.printAll ();
+		  MortgagesReport.printReport();
 		  break;
 
 		case '3':

@@ -294,17 +294,6 @@ class Mortgage extends Asset
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 
-  public static void printAll ()
-  //
-  // displays a list of all mortgage objects.
-  //
-  {
-      MortgagesReport.printReport();
-
-  }  // printAll
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-
   public void obtainNewData ()
   //
   // obtainNewData reads a new mortgage record by calling readMortgageData.
