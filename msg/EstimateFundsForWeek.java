@@ -2,36 +2,34 @@ package msg;
 
 public class EstimateFundsForWeek {
 
-  public static void compute()
-  //
-  // computes the estimated funds available for week
-  //
-  {
-
-    try
+    public static void compute()
+    //
+    // computes the estimated funds available for week
+    //
     {
-	float expectedWeeklyInvestmentReturn = (float) 0.0; // expected weekly investment return
-	float expectedTotalWeeklyNetPayments = (float) 0.0; // expected total mortgage payments less total weekly grants
-        float estimatedFunds = (float) 0.0;
 
-	Investment  inv = new Investment ();	// investment record
-	Mortgage    mort = new Mortgage ();	// mortgage record
+        try {
+            float expectedWeeklyInvestmentReturn = (float) 0.0; // expected weekly investment return
+            float expectedTotalWeeklyNetPayments = (float) 0.0; // expected total mortgage payments less total weekly grants
+            float estimatedFunds = (float) 0.0;
 
-	expectedWeeklyInvestmentReturn = inv.totalWeeklyReturnOnInvestment ();
-	expectedTotalWeeklyNetPayments = mort.totalWeeklyNetPayments ();
+            Investment inv = new Investment();    // investment record
+            Mortgage mort = new Mortgage();    // mortgage record
 
-        estimatedFunds = (expectedWeeklyInvestmentReturn - (MSGApplication.getAnnualOperatingExpenses () / (float) 52.0) +
-                        expectedTotalWeeklyNetPayments);
+            expectedWeeklyInvestmentReturn = inv.totalWeeklyReturnOnInvestment();
+            expectedTotalWeeklyNetPayments = mort.totalWeeklyNetPayments();
 
-        MSGApplication.setEstimatedFundsForWeek(estimatedFunds);
+            estimatedFunds = (
+                    expectedWeeklyInvestmentReturn - (MSGApplication.getAnnualOperatingExpenses() / (float) 52.0) +
+                            expectedTotalWeeklyNetPayments);
 
-    }
-    catch (Exception e)
-    {
-	System.out.println ("***** Error: EstimatedFundsForWeek.compute () *****");
-	System.out.println ("\t" + e);
-    }
+            MSGApplication.setEstimatedFundsForWeek(estimatedFunds);
 
-  }  // compute
+        } catch (Exception e) {
+            System.out.println("***** Error: EstimatedFundsForWeek.compute () *****");
+            System.out.println("\t" + e);
+        }
+
+    }  // compute
 
 }
