@@ -273,7 +273,7 @@ class UserInterface {
                         break;
 
                     case '2':
-                        MortgagesReport.printReport();
+                        Report.printReport("mortgage");
                         break;
 
                     case '3':
