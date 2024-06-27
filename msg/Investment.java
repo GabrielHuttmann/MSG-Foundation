@@ -193,7 +193,7 @@ class Investment extends Asset {
     // displays a list of all investment objects.
     //
     {
-        InvestmentsReport.printReport();
+        Report.printReport("investment");
 
     }  // printAll
 
